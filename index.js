@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
@@ -10,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 mongoose.set("strictQuery", false);
-mongoose.connect("mongodb+srv://admin-in:Test123@cluster0.d8oxbgs.mongodb.net/wikiDB", {useNewUrlParser: true});
+mongoose.connect(process.env.DB_URL, {useNewUrlParser: true});
 
 const articleSchema = {
     title: {
